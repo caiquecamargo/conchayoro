@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: development
     steps:
     - uses: actions/checkout@v4
     - run: sudo apt-get install pandoc
@@ -22,6 +23,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: development
     needs: build
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
