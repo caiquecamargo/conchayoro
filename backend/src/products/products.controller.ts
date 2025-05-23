@@ -23,6 +23,11 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
+  @Get()
+  findByCriteria(@Body() criteria: any): Promise<Product[]> {
+    return this.productsService.findByCriteria(criteria);
+  }
+
   @Put(':id')
   update(
     @Param('id') id: string,
@@ -30,6 +35,7 @@ export class ProductsController {
   ): Promise<Product> {
     return this.productsService.update(id, updateProductDto);
   }
+
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.productsService.remove(id);
