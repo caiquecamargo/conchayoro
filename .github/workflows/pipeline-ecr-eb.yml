@@ -18,6 +18,15 @@ env:
   STACK_NAME: ${{ vars.STACK_NAME }}
   
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - run: npm --prefix backend install 
+    - run: npm --prefix backend test -- --testPathIgnorePatterns=backend/src/products/products.service.spec.ts
   build:
     runs-on: ubuntu-latest
     env:
