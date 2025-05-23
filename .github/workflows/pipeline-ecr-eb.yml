@@ -29,6 +29,7 @@ jobs:
     - run: npm --prefix backend test -- --testPathIgnorePatterns=backend/src/products/products.service.spec.ts
   build:
     runs-on: ubuntu-latest
+    needs: tests
     env:
       MODULE_FULLNAME: ${{ vars.PROJECT_NAME }}/${{ vars.MODULE_NAME }}
       REGISTRY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
