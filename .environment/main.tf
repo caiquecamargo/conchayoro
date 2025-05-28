@@ -1,12 +1,12 @@
 resource "aws_ecr_repository" "cyo_ecr_repo" {
   name = "${var.PROJECT_NAME}/${var.MODULE_NAME}"
   image_tag_mutability = "MUTABLE"
-  force_delete = "true"
+  force_delete = true
   image_scanning_configuration {
-  scan_on_push = true
+    scan_on_push = true
+  }
 }
 
-}
 resource "aws_elastic_beanstalk_application" "cyo_eba" {
   name = "${var.PROJECT_NAME}"
   description = "Project application"
