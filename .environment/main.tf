@@ -14,8 +14,7 @@ resource "aws_elastic_beanstalk_application" "cyo_eba" {
 
 resource "aws_elastic_beanstalk_environment" "cyo_ebef" {
   name = "${var.MODULE_NAME}"
-  application =
-  aws_elastic_beanstalk_application.cyo_eba.name
+  application = aws_elastic_beanstalk_application.cyo_eba.name
   solution_stack_name = "${var.SOLUTION_STACK_NAME}"
 
   setting {
@@ -29,7 +28,7 @@ resource "aws_elastic_beanstalk_environment" "cyo_ebef" {
     name = "EnvironmentType"
     value = "${var.EnvironmentType}"
   }
-  
+
   setting {
     namespace = "aws:elasticbeanstalk:environment"
     name = "LoadBalancerType"
